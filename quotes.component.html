@@ -1,0 +1,71 @@
+
+
+<div class="container mt-5">
+  
+  <form>
+    <fieldset>
+      <h3 class="text-primary">Quote Form</h3>
+      <!--<a class="btn btn-primary btn-sm mb-2" (click)="">Create</a>-->
+      <div class="form-group">
+        <label class="form-label">Quote Type</label>
+        <input type="text" class="form-control" name="quoteType" [(ngModel)]="quote.quoteType" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Contact</label>
+        <input type="text" class="form-control" name="contact" [(ngModel)]="quote.contact" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Task</label>
+        <input type="text" class="form-control" name="task" [(ngModel)]="quote.task" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Due Date</label>
+        <input type="date" class="form-control" name="dueDate" [(ngModel)]="quote.dueDate"/>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Task Type</label>
+        <input type="text" class="form-control"  name="taskType" [(ngModel)]="quote.taskType" />
+      </div>
+
+      <br />
+
+      <button type="button" class="btn btn-success" (click)="quote.quoteID > 0 ? putQuote() : postQuote()">Save</button>
+
+    </fieldset>    
+  </form>
+  <br />
+
+  <h3 class="text-primary">Quote List</h3>
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Quote Id</th>
+        <th>Quote Type</th>
+        <th>Contact</th>
+        <th>Task</th>
+        <th>Due Date</th>
+        <th>Task Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let q of quoteList">
+        <td>{{q.quoteID}}</td>
+        <td>{{q.quoteType}}</td>
+        <td>{{q.contact}}</td>
+        <td>{{q.task}}</td>
+        <td>{{q.dueDate}}</td>
+        <td>{{q.taskType}}</td>
+        <td>
+          <span style="cursor: pointer; text-decoration: underline" (click)="getQuoteById(q.quoteID)">Edit</span> |
+          <span style="cursor: pointer; text-decoration: underline" (click)="delete(q.quoteID)">Delete</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
